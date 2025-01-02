@@ -40,27 +40,31 @@ def computer_move(com_board,player_board,rest_move):
     c=set(com_board)
     p=set(player_board)
     r=set(rest_move)
-    for a in b:
-        d=a-c
-        if d.issubset(r):
-            if len(d)==1:
-                victory="i don"
-                return list(d)[0]
-            else:
-                print("hhh")
-                victory=None
-    if victory==None:
+    if len(r)==1:
+        return rest_move[0]
+    else:
         for a in b:
-            d=a-p
+            d=a-c
             if d.issubset(r):
                 if len(d)==1:
-                    victory="i don" 
+                    victory="i don"
                     return list(d)[0]
                 else:
                     victory=None
-    if victory==None:
-        r=list(r)
-        return random.choice(r)
+        if victory==None:
+            for a in b:
+                d=a-p
+                if d.issubset(r):
+                    if len(d)==1:
+                        victory="i don" 
+                        return list(d)[0]
+                    else:
+                        victory=None
+        if victory==None:
+            print("in L")
+            r=rest_move
+            z=random.choice(r)
+            return z
 
 
 #game mode
